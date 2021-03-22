@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5036c019-787d-4bac-9b8d-5c3f2c4b72fa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GuideIntro/javaIntro.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ObjectGuide1/ObjectGuide1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ObjectGuide1/src/guide1/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ObjectGuide1/src/guide1/exc1/Rectangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GuideIntro/task11.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GuideIntro/task12.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GuideIntro/task13.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GuideIntro/task8.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GuideIntro/task9.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GuideIntro/javaIntro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuideIntro/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +38,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -54,5 +62,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

@@ -1,7 +1,7 @@
 package GuideIntro;
 
-public class javaIntro {
+public class Main {
     public static void main(String[] args) {
-        
+
     }
 }
