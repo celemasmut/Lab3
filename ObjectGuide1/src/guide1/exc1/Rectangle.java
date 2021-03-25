@@ -7,8 +7,8 @@ public class Rectangle {
 
     public Rectangle ()
     {
-        this.height=(float) 1.0;
-        this.width=(float) 1.0;
+        this.height= 1.0;
+        this.width= 1.0;
     }
 
     public Rectangle (float width, float height) {
