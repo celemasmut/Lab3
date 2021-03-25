@@ -3,11 +3,11 @@ package guide1.exc2;
 public class Employee {
     private int dni;
     private String nameAndSurname;
-    private double salary;
+    private float salary;
 
     public Employee(){}
 
-    public Employee(int dni, String nameAndSurname, double salary)
+    public Employee(int dni, String nameAndSurname, float salary)
     {
         this.dni=dni;
         this.nameAndSurname=nameAndSurname;
@@ -23,7 +23,7 @@ public class Employee {
     {
         this.nameAndSurname=nameAndSurname;
     }
-    public void setSalary(double salary)
+    public void setSalary(float salary)
     {
         this.salary=salary;
     }
@@ -35,14 +35,13 @@ public class Employee {
     {
         return this.nameAndSurname;
     }
-    public double getSalary()
+    public float getSalary()
     {
         return this.salary;
     }
-    public double annualSalary()
+    public float annualSalary()
     {
-        float yearSalary = (float) (12 * this.salary);
-        return yearSalary;
+        return 12 * this.salary;
     }
     public void increaseSalary(float percentage)
     {
