@@ -61,5 +61,7 @@ public class Utilities {
         System.out.println(valeAccount.ToExtract(14500));
         System.out.println(valeAccount.ToExtract(3500));
         System.out.println(valeAccount.ToExtract(9500));
+        System.out.println("\n Your transactions");
+        System.out.println(valeAccount.showTransactions());
     }
 }
