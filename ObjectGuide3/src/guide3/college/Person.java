@@ -1,4 +1,4 @@
-package guide3.school;
+package guide3.college;
 
 public class Person {
     private String dni;
