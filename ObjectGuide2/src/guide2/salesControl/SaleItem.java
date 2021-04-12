@@ -1,7 +1,9 @@
 package guide2.salesControl;
 
+import java.util.UUID;
+
 public class SaleItem {
-        private String id;
+        private UUID id;
         private String name;
         private String description;
         private float unitPrice;
@@ -45,15 +47,13 @@ public class SaleItem {
             return this.unitPrice;
         }
 
-        public String  getID()
+        public UUID  getID()
         {
             return this.id;
         }
 
     public void setId(){
-        this.id = this.id+= java.util.UUID.randomUUID().toString();
-        this.id.replaceAll("-","");
-        this.id.substring(0,32);
+        this.id = java.util.UUID.randomUUID();
     }
 
     @Override

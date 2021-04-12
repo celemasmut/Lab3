@@ -8,11 +8,7 @@ import guide2.salesControl.Bill;
 import guide2.salesControl.Client;
 import guide2.salesControl.SaleItem;
 
-import java.util.Scanner;
-
 public class Utilities {
-    static Scanner scan = new Scanner(System.in);
-
 
     public static void  exerciseMenu() {
         System.out.println("[1] Books");
@@ -42,12 +38,16 @@ public class Utilities {
     public static void salesControl(){
         Client ayeBulacio=new Client("Ayelen Bulacio","ayebulacio@mail.com",17);
         System.out.println(ayeBulacio.toString());
-        Bill ayeBill=new Bill(ayeBulacio,5734);
-        System.out.println(ayeBill.getTotal());
+        Bill ayeBill=new Bill(ayeBulacio);
+       // System.out.println(ayeBill.totalAmountWithClientDiscount());
         System.out.println(ayeBill.totalAmountWithClientDiscount());
         System.out.println(ayeBill.toString());
         SaleItem sportShoes = new SaleItem("Run Falcon","Black and White 2.0 for women",12575);
-        ayeBill = new Bill(ayeBulacio, sportShoes.getUnitPrice(),sportShoes);
+        SaleItem sportShort = new SaleItem("Falcon","Black and White ",5800);
+        SaleItem sportTshirt = new SaleItem("T-Shirt Falcon","Black ",3500);
+        ayeBill.setItems(sportTshirt);
+        ayeBill.setItems(sportShort);
+        ayeBill.setItems(sportShoes);
         System.out.println(ayeBill.toString());
     }
 

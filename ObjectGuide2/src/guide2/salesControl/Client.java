@@ -1,8 +1,10 @@
 package guide2.salesControl;
 
+import java.util.UUID;
+
 public class Client {
     //Private properties
-    private String id="";
+    private UUID id;
     private String name;
     private String email;
     private float percentDiscount;
@@ -39,11 +41,9 @@ public class Client {
 
 
     public void setId(){
-        this.id+= java.util.UUID.randomUUID().toString();
-        this.id.replaceAll("-","");
-        this.id.substring(0,32);
+        this.id=java.util.UUID.randomUUID();
     }
-    public String getId(){
+    public UUID getId(){
         return this.id;
     }
 

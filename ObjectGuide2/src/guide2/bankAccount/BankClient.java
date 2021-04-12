@@ -1,7 +1,9 @@
 package guide2.bankAccount;
 
+import java.util.UUID;
+
 public class BankClient {
-    private String id;
+    private UUID id;
     private String name;
     private char genre;
 
@@ -15,10 +17,10 @@ public class BankClient {
     }
 
     public void setId() {
-        this.id = java.util.UUID.randomUUID().toString();
+        this.id = java.util.UUID.randomUUID();
     }
 
-    public String getId() {
+    public UUID getId() {
         return this.id;
     }
 
@@ -35,7 +37,6 @@ public class BankClient {
     }
 
     public void setGenre(char genre) {
-        if((genre == 'M' || genre == 'F' ) || (genre == 'm' || genre == 'f' ))
             this.genre = genre;
     }
 

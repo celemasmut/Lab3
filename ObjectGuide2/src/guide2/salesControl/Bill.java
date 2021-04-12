@@ -2,39 +2,29 @@ package guide2.salesControl;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Bill {
-    private String id="";
-    private float total=0;
+    private UUID id;
     private LocalDateTime date;
     private Client client;
-    private ArrayList <SaleItem> items= new ArrayList<SaleItem>();
-
+    private ArrayList <SaleItem> items= new ArrayList<>();
 
     public Bill(){}
 
-    public Bill(Client client,float total){
+    public Bill(Client client){
         setId();
         setClient(client);
         setDate();
-        setTotal(total);
     }
 
-    public Bill(Client client,float total, SaleItem items){
+    public Bill(Client client, SaleItem items){
         setId();
         setItems(items);
         setClient(client);
         setDate();
-        setTotal(total);
     }
 
-    public void setTotal(float total) {
-        this.total =+ total;
-    }
-
-    public float getTotal() {
-        return this.total;
-    }
 
     public void setItems(SaleItem item) {
         this.items.add(item);
@@ -61,14 +51,20 @@ public class Bill {
     }
 
     public void setId(){
-        this.id = java.util.UUID.randomUUID().toString();
+        this.id = java.util.UUID.randomUUID();
     }
-    public String getId(){
+    public UUID getId(){
         return this.id;
     }
 
     public float totalAmountWithClientDiscount(){
-        return this.total-((this.total*client.getPercentDiscount())/100) ;
+        float total=0;
+        for(SaleItem itemSold : items){
+            if(itemSold != null){
+                total+=itemSold.getUnitPrice();
+            }
+        }
+        return total-(total*(client.getPercentDiscount()/100)) ;
     }
 
     @Override
@@ -78,7 +74,7 @@ public class Bill {
                 ", date=" + getDate() +
                 ", client=" + getClient() +
                 ", Items=" +getItems() +
-                ", total=" + getTotal() +
+             //   ", total="  +
                 ", total with discount=" + totalAmountWithClientDiscount() +
                 '}';
     }
