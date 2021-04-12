@@ -30,7 +30,7 @@ public class Cylinder extends Circle {
     }
 
     public String showCylinderDat(){
-        return "Cylinder{" + "radio="+ getRadio() + "height=" + this.height + "area="+calculateArea()+ "volume="+ calculateVolume()+ '}';
+        return "Cylinder{" + "radio="+ getRadio() + " height=" + this.height + " area="+calculateArea()+ " volume="+ calculateVolume()+ '}';
     }
 
     @Override

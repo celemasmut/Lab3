@@ -1,11 +1,11 @@
 package guide3.college;
 
 public class Person {
-    private String dni;
-    private String name;
-    private String surname;
-    private String email;
-    private String address;
+    private String dni="0";
+    private String name="Unknown";
+    private String surname="Unknown";
+    private String email="none";
+    private String address="none";
 
     public Person(){}
 
