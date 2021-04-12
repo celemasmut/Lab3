@@ -4,6 +4,10 @@ import guide3.circle.Cylinder;
 import guide3.college.Person;
 import guide3.college.Staff;
 import guide3.college.Student;
+import guide3.geometricfigures.Circle;
+import guide3.geometricfigures.GeometricFigures;
+import guide3.geometricfigures.Rectangle;
+import guide3.geometricfigures.Square;
 
 public class Util {
    // static Scanner scan = new Scanner(System.in);
@@ -55,6 +59,26 @@ public class Util {
     }
 
     public static void geometricFiguresClass(){
+        Circle circle1=new Circle(4.3f);
+        Circle circle2=new Circle();
+
+        Rectangle rectangle1 = new Rectangle();
+        Rectangle rectangle2= new Rectangle(2.7f,0.8f,"Mahogany");
+
+        Square square1 = new Square();
+        Square square2 = new Square(6.0f,"Aqua");
+
+        GeometricFigures [] myGeometricFigures = new GeometricFigures[6];
+        myGeometricFigures[0]=circle1;
+        myGeometricFigures[1]=circle2;
+        myGeometricFigures[2]=rectangle1;
+        myGeometricFigures[3]=rectangle2;
+        myGeometricFigures[4]=square1;
+        myGeometricFigures[5]=square2;
+
+        for(GeometricFigures myFig : myGeometricFigures){
+            System.out.println(myFig.toString());
+        }
 
     }
 }

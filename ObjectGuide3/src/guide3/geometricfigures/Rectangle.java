@@ -1,8 +1,8 @@
 package guide3.geometricfigures;
 
 public class Rectangle extends GeometricFigures {
-  private   float width;
-   private float height;
+  private   float width=2.4f;
+   private float height=1.5f;
 
     public Rectangle () {
         super();
@@ -49,6 +49,8 @@ public class Rectangle extends GeometricFigures {
                 "is a :"+super.toString()+
                 "width=" + width +
                 ", height=" + height +
+                ", area="+calculateArea()+
+                ", perimeter="+calculatePerimeter()+
                 '}';
     }
 }

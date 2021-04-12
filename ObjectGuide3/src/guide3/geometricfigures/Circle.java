@@ -39,6 +39,8 @@ public class Circle extends GeometricFigures{
         return "Circle{" +
                 "is a:"+super.toString()+
                 "radio=" + radio +
+                ", area="+calculateArea()+
+                ", perimeter="+calculatePerimeter()+
                 '}';
     }
 }

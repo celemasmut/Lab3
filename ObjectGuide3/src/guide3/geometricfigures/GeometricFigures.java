@@ -1,7 +1,7 @@
 package guide3.geometricfigures;
 
 public abstract class GeometricFigures {
-    private String colour;
+    private String colour = "Blue";
 
     public GeometricFigures(){}
 
