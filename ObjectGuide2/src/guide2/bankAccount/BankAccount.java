@@ -1,12 +1,14 @@
 package guide2.bankAccount;
 
+import java.util.UUID;
+
 public class BankAccount {
-    private String id;
+    private UUID id;
     private BankClient client;
     private float balance;
     private float negDebitBalance;
 
-   private int MAX_OPS=10;
+   private static final int MAX_OPS=10;
    private int index=0;
     private String bankingTransactions[] = new String[MAX_OPS];
 
@@ -19,7 +21,7 @@ public class BankAccount {
         setClient(client);
         setBalance(balance);
         setId();
-        setNegDebitBalance(2000);
+        setNegDebitBalance(-2000);
     }
 
     public String[] getBankingTransactions() {
@@ -31,7 +33,7 @@ public class BankAccount {
     }
 
     private void setId(){
-        this.id = java.util.UUID.randomUUID().toString();
+        this.id = java.util.UUID.randomUUID();
 
     }
 
@@ -56,11 +58,15 @@ public class BankAccount {
     }
 
     public void setBalance(float balance) {
-        this.balance = balance;
+        if(balance < 0){
+            this.balance=0;
+        }else {
+            this.balance = balance;
+        }
     }
 
 
-    private  String getId(){
+    private  UUID getId(){
         return this.id;
     }
 
@@ -80,16 +86,13 @@ public class BankAccount {
     }
     public String ToExtract(float extract){
         String message="";
-        if(extract<=getBalance()){
+        float newBalance=this.balance - extract;
+        if(newBalance>= this.negDebitBalance){
             setBalance(getBalance()-extract);
+            float newNegBal = (getBalance() + getNegDebitBalance())-extract;
+            setNegDebitBalance(newNegBal);
             extractRegisterOper(extract);
-            message="OK, you have extracted the sum of $"+extract+", your balance is now: $"+getBalance();
-        }else if (extract <= (getBalance()+getNegDebitBalance())) {
-                float newNegBal = (getBalance() + getNegDebitBalance())-extract;
-                setBalance(0);
-                setNegDebitBalance(newNegBal);
-                extractRegisterOper(extract);
-                message = "OK,you have extracted the sum of $"+extract+", your negative balance is now: $" + getNegDebitBalance() +" you are in debt with $"+(2000-getNegDebitBalance());
+            message="OK, you have extracted the sum of $"+extract+", your balance is now: $"+getBalance()+", Negative balance $"+getNegDebitBalance();;
         }else{
                 message="No credit, your balance is not enough to extract $"+extract + " Balance: $"+getBalance()+", Negative balance $"+getNegDebitBalance();
             }
