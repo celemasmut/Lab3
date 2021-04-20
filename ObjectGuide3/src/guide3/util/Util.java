@@ -33,7 +33,6 @@ public class Util {
         Student aldo=new Student("56789012","Aldo","Numsot","aldoNum@mail.com","cualk 789","07/03/2012",3500,"Chef");
         Staff n = new Staff();
         Staff belen = new Staff("38479256","Belen","Soneto","beluSoneto@mail.com","dir 123",10000,38000,"Afternoon");
-        Staff jose = new Staff("79256838","Jose","Soneto","joseSoneto@mail.com","dire 1234",10000,38000,"Morning");
         Staff alfon = new Staff("384799683","Alfonso","Soneto","alfonSoneto@mail.com","add 423",10000,38000,"Afternoon");
         Staff clau = new Staff("74679256","Claudia","Soneto","clauSoneto@mail.com","dir 733",10000,38000,"Morning");
         Person [] college=new Person[8];
@@ -53,7 +52,7 @@ public class Util {
         System.out.println("In the array there are "+i+" Students and "+j+" Staff");
         float total=0;
         for(Person stud : college){
-            if(stud instanceof Student) total+=((Student) stud).getMonthlyFee();
+            if(stud instanceof Student) total+= ((Student) stud).getMonthlyFee();
         }
         System.out.println("College's income :$"+total);
     }
