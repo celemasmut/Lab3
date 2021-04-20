@@ -46,4 +46,14 @@ public class Rental {
     public void setTicket(LoanTicket ticket) {
         this.ticket = ticket;
     }
+
+    @Override
+    public String toString() {
+        return "Rental{" +
+                "id=" + id +
+                ", myCustomer=" + myCustomer +
+                ", movieRented=" + movieRented +
+                ", ticket=" + ticket +
+                '}';
+    }
 }
