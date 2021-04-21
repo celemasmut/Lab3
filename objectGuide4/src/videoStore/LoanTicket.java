@@ -24,11 +24,14 @@ public class LoanTicket {
     }
 
     public void setRegained() {
-        this.regained = onLoan.plusDays(3);
+        this.regained = onLoan;
     }
 
     @Override
     public String toString() {
         return "The movie loaned on date: "+getOnLoan()+" needs to be regained on date: "+getRegained();
     }
+
+
+
 }

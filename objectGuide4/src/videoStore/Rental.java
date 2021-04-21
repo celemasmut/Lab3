@@ -4,14 +4,14 @@ import java.util.UUID;
 
 public class Rental {
     private UUID id;
-    private Customer myCustomer;
+ //   private Customer myCustomer;
     private Movie movieRented;
     private LoanTicket ticket;
 
-    public Rental(Customer myCustomer,Movie movieRented,LoanTicket ticket){
-        this.myCustomer=myCustomer;
+    public Rental(/*Customer myCustomer,*/Movie movieRented){
+      //  this.myCustomer=myCustomer;
         this.movieRented=movieRented;
-        this.ticket=ticket;
+        setTicket();
         setId();
     }
 
@@ -23,13 +23,13 @@ public class Rental {
         this.id = UUID.randomUUID();
     }
 
-    public Customer getMyCustomer() {
+   /* public Customer getMyCustomer() {
         return myCustomer;
     }
 
     public void setMyCustomer(Customer myCustomer) {
         this.myCustomer = myCustomer;
-    }
+    }*/
 
     public Movie getMovieRented() {
         return movieRented;
@@ -43,16 +43,17 @@ public class Rental {
         return ticket;
     }
 
-    public void setTicket(LoanTicket ticket) {
-        this.ticket = ticket;
+    public void setTicket() {
+        this.ticket = new LoanTicket();
     }
+
 
     @Override
     public String toString() {
         return "Rental{" +
                 "id=" + id +
-                ", myCustomer=" + myCustomer +
-                ", movieRented=" + movieRented +
+               // ", Customer=" + getMyCustomer().getName() +
+                ", movie Rented =" + getMovieRented().getTitle() +
                 ", ticket=" + ticket +
                 '}';
     }

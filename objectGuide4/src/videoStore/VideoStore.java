@@ -4,11 +4,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class VideoStore {
-    private ArrayList <Customer> customers = new ArrayList<>();
-    private ArrayList <Movie> movies = new ArrayList<>();
-    private ArrayList <Rental> rentals = new ArrayList<>();
+    private ArrayList<Customer> customers = new ArrayList<>();
+    private ArrayList<Movie> movies = new ArrayList<>();
+    // private ArrayList <Rental> rentals = new ArrayList<>();
 
-    public VideoStore(){ }
+    public VideoStore() {
+    }
 
     public ArrayList<Customer> getCustomers() {
         return customers;
@@ -26,31 +27,40 @@ public class VideoStore {
         this.movies.add(movie);
     }
 
-    public ArrayList<Rental> getRentals() {
+  /*  public ArrayList<Rental> getRentals() {
         return rentals;
     }
 
     public void setRentals(Rental rental) {
         this.rentals.add(rental);
-    }
+    }*/
 
-    public String currentRents(){
-        String message="";
-        for(Rental currentRents: rentals){
-            message+=currentRents.toString()+" .\n";
+    public String currentRents() {
+        String message = "";
+        for (int i = 0; i < customers.size(); i++) {
+            message += customers.get(i).getCustomerRentals().get(i).getTicket().toString() + " .\n";
         }
+        if (message.isEmpty()) message = "empty";
         return message;
     }
 
-    public String regainOnDate(){
-        String message="";
-        for (Rental regainToday : rentals){
-            if(regainToday.getTicket().getRegained().equals(LocalDateTime.now())){
-                message+= regainToday.toString()+" .\n ";
+    public String regainOnDate() { // such a headache but it works!
+        String message = "";
+        for (int i = 0; i < customers.size(); i++) {
+            LocalDateTime today = LocalDateTime.now();
+            if ( customers.get(i).getCustomerRentals().get(i).getTicket().getRegained().getDayOfWeek().equals(today.getDayOfWeek())) {
+                message += customers.get(i).getCustomerRentals().get(i).toString() + " .\n ";
             }
         }
+        if (message.isEmpty()) message = "empty";
+
         return message;
+
     }
 
 
 }
+
+    
+
+
