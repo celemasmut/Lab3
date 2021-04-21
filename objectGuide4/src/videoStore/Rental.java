@@ -7,9 +7,9 @@ public class Rental {
  //   private Customer myCustomer;
     private Movie movieRented;
     private LoanTicket ticket;
+    private String status="on";
 
-    public Rental(/*Customer myCustomer,*/Movie movieRented){
-      //  this.myCustomer=myCustomer;
+    public Rental(Movie movieRented){
         this.movieRented=movieRented;
         movieRented.setRent();
         setTicket();
@@ -23,14 +23,6 @@ public class Rental {
     public void setId() {
         this.id = UUID.randomUUID();
     }
-
-   /* public Customer getMyCustomer() {
-        return myCustomer;
-    }
-
-    public void setMyCustomer(Customer myCustomer) {
-        this.myCustomer = myCustomer;
-    }*/
 
     public Movie getMovieRented() {
         return movieRented;
@@ -48,12 +40,19 @@ public class Rental {
         this.ticket = new LoanTicket();
     }
 
+    public void setStatusOff(){
+        this.status="off";
+    }
+
+    public String getStatus(){
+        return this.status;
+    }
+
 
     @Override
     public String toString() {
         return "Rental{" +
                 "id=" + id +
-               // ", Customer=" + getMyCustomer().getName() +
                 ", movie Rented =" + getMovieRented().getTitle() +
                 ", ticket=" + ticket +
                 '}';

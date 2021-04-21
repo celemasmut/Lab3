@@ -15,10 +15,11 @@ public class Movie {
     private int stock=0;
     private int rent=0;
 
-    public Movie(String title,String country,int movieLength,Audience classification, Genre movieGenre,int stock){
+    public Movie(String title,String country, LocalDate releaseDate,int movieLength,Audience classification, Genre movieGenre,int stock){
         this.title=title;
         this.country=country;
         setMovieLength(movieLength);
+        this.releaseDate=releaseDate;
         this.classification=classification;
         this.movieGenre=movieGenre;
         this.stock=stock;
@@ -28,7 +29,7 @@ public class Movie {
         return rent;
     }
 
-    protected void setRent() {
+    public  void setRent() {
         this.rent++;
     }
 
