@@ -11,6 +11,7 @@ public class Rental {
     public Rental(/*Customer myCustomer,*/Movie movieRented){
       //  this.myCustomer=myCustomer;
         this.movieRented=movieRented;
+        movieRented.setRent();
         setTicket();
         setId();
     }

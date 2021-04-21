@@ -95,4 +95,7 @@ public class Movie {
     public void setStock(int stock) {
         this.stock += stock;
     }
+    public void discountStock(){
+        this.stock--;
+    }
 }

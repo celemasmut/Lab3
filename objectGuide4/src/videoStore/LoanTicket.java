@@ -24,6 +24,10 @@ public class LoanTicket {
     }
 
     public void setRegained() {
+        this.regained = onLoan.plusDays(2);
+    }
+
+    public void changeRegainedDate(){
         this.regained = onLoan;
     }
 

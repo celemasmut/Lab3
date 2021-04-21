@@ -2,6 +2,7 @@ package videoStore;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class VideoStore {
     private ArrayList<Customer> customers = new ArrayList<>();
@@ -9,6 +10,21 @@ public class VideoStore {
     // private ArrayList <Rental> rentals = new ArrayList<>();
 
     public VideoStore() {
+    }
+
+    public void addMovieList(String title,String country,int movieLength,Audience classification, Genre movieGenre,int stock){
+        Movie newMovie =new Movie(title,country,movieLength,classification,movieGenre,stock);
+        setMovies(newMovie);
+    }
+
+    public void addCustomerRental(UUID idCustomer, Movie theMovie){
+        Rental customerRental = new Rental(theMovie);
+        for (Customer theCustomer : customers){
+            if(theCustomer.getId().equals(idCustomer)){
+                theCustomer.setCustomerRentals(customerRental);
+                customerRental.getMovieRented().discountStock();
+            }
+        }
     }
 
     public ArrayList<Customer> getCustomers() {
@@ -35,16 +51,28 @@ public class VideoStore {
         this.rentals.add(rental);
     }*/
 
-    public String currentRents() {
-        String message = "";
-        for (int i = 0; i < customers.size(); i++) {
-            message += customers.get(i).getCustomerRentals().get(i).getTicket().toString() + " .\n";
+    public Movie movieExist(String title){
+        for(Movie theMovie : movies) {
+            if (theMovie.getTitle().equals(title)) return theMovie;
+        }
+        return null;
+    }
+
+    public boolean movieStock(Movie selected){
+        return (selected.getStock() > 0) ? true : false;
+    }
+    public String currentRentals(){
+        String message="";
+        for (Customer custrent : customers){
+            message+= custrent.getCustomerRentals().toString();
         }
         if (message.isEmpty()) message = "empty";
         return message;
     }
 
-    public String regainOnDate() { // such a headache but it works!
+
+    //enlist those movies that have to be regained today to the videoStore
+    public String regainOnDate() { // such a headache the equals but it works! it works only if the regain date is set for today
         String message = "";
         for (int i = 0; i < customers.size(); i++) {
             LocalDateTime today = LocalDateTime.now();

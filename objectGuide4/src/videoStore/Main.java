@@ -4,21 +4,22 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Movie wwzMovie = new Movie("World war Z","EE.UU",123,Audience.NC17,Genre.HORROR,4);
-        System.out.println(wwzMovie.getTitle());
-
         VideoStore myVideoStore = new VideoStore();
-        myVideoStore.setMovies(wwzMovie);
+        myVideoStore.addMovieList("World war Z","EE.UU",123,Audience.NC17,Genre.HORROR,2);
 
         Customer celeCustomer = new Customer("Celeste","226738537","casa 535");
         myVideoStore.setCustomers(celeCustomer);
+        System.out.println("Exist movie :"+myVideoStore.movieExist("World war Z").getTitle());
+        if(myVideoStore.movieStock(myVideoStore.movieExist("World war Z"))) myVideoStore.addCustomerRental(celeCustomer.getId(),myVideoStore.movieExist("World war Z"));
 
-        Rental celeRental = new Rental(wwzMovie);
 
-        celeCustomer.setCustomerRentals(celeRental);
-
-        System.out.println(myVideoStore.currentRents());
-        System.out.println("The movies that need to be regained today are: "+myVideoStore.regainOnDate());
+        System.out.println("The rentals are: "+myVideoStore.currentRentals());
         System.out.println(celeCustomer.toString());
+
+        System.out.println("The movies that need to be regained today are: "+myVideoStore.regainOnDate());
+        celeCustomer.getCustomerRentals().get(0).getTicket().changeRegainedDate();
+        System.out.println("The movies that need to be regained today are: "+myVideoStore.regainOnDate());
+
+
     }
 }
