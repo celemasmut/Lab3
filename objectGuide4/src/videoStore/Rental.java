@@ -4,7 +4,6 @@ import java.util.UUID;
 
 public class Rental {
     private UUID id;
- //   private Customer myCustomer;
     private Movie movieRented;
     private LoanTicket ticket;
     private String status="on";

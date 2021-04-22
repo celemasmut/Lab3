@@ -15,6 +15,7 @@ public class Main {
         myVideoStore.addMovieList("The Avengers","EE.UU",LocalDate.of(2012,4,11),144,Audience.PG13,Genre.ACTION,1);
         myVideoStore.addMovieList("Guardians of the Galaxy","EE.UU", LocalDate.of(2014,7,21),125,Audience.PG13,Genre.ACTION,2);
 
+        System.out.println(myVideoStore.getMoviesList().toString());
         //adding some customers and verifying if they already exist
         System.out.println(myVideoStore.addCustomerList("Celeste","226738537","casa 535"));
         System.out.println(myVideoStore.addCustomerList("Joa","2274857366","casa 353"));
@@ -27,30 +28,44 @@ public class Main {
         System.out.println(myVideoStore.addCustomerList("Celeste","226738537","casa 535"));
 
         // create a customer rental.
-        myVideoStore.addCustomerRental(myVideoStore.searchingForCustomer("226738537"),myVideoStore.movieExist("Guardians of the Galaxy"));
+        UUID custId = myVideoStore.searchingForCustomer("226738537");
+        myVideoStore.addCustomerRental(custId,myVideoStore.movieExist("Guardians of the Galaxy"));
 
         //check stock
-        System.out.println(myVideoStore.getMovies().get(3).getStock());
+        System.out.println("Exist movie :"+myVideoStore.movieExist("Guardians of the Galaxy").getTitle() + " Stock : "+ myVideoStore.movieStock(myVideoStore.movieExist("Guardians of the Galaxy")));
 
 
         //List current rentals
         System.out.println("The rentals are: "+myVideoStore.currentRentals());
         //listing customers
-        System.out.println(myVideoStore.getCustomers().toString());
+        System.out.println(myVideoStore.getCustomersList().toString()+"\n");
 
         //verifying if there is any movie that needs to be returned today
         System.out.println("The movies that need to be regained today are: "+myVideoStore.listRegainOnDate());
-       myVideoStore.getCustomers().get(0).getCustomerRentals().get(0).getTicket().changeRegainedDate();
+       myVideoStore.getCustomersList().get(0).getCustomerRentals().get(0).getTicket().changeRegainedDate();//change day
         System.out.println("The movies that need to be regained today are: "+myVideoStore.listRegainOnDate());
 
         //return movie
-        UUID idRental=myVideoStore.getCustomers().get(0).getCustomerRentals().get(0).getId();
+        UUID idRental=myVideoStore.lookingForIdRental("Guardians of the Galaxy");
         myVideoStore.returnMovie(idRental);
         //check stock
-        System.out.println(myVideoStore.getMovies().get(3).getStock());
+        System.out.println("Exist movie :"+myVideoStore.movieExist("Guardians of the Galaxy").getTitle() + " Stock : "+ myVideoStore.movieStock(myVideoStore.movieExist("Guardians of the Galaxy")));
 
         //showing last customer rentals
-        System.out.println(myVideoStore.showingLastCustomerRentals(myVideoStore.searchingForCustomer("226738537")));
+      //  System.out.println(myVideoStore.showingLastCustomerRentals(myVideoStore.searchingForCustomer("226738537")));
 
+        //forsing rents to verify list
+        myVideoStore.getMoviesList().get(0).setRent();
+        myVideoStore.getMoviesList().get(2).setRent();
+        myVideoStore.getMoviesList().get(2).setRent();
+        myVideoStore.getMoviesList().get(1).setRent();
+        myVideoStore.getMoviesList().get(1).setRent();
+        myVideoStore.getMoviesList().get(2).setRent();
+
+        myVideoStore.sortMoviesByPopularity();
+
+        //System.out.println(myVideoStore.getMoviesList());
+        myVideoStore.getMoviesList().forEach(el -> System.out.println(el.toString()));//el is like the object
+      //  list.forEach(el -> System.out.println(el.age))
     }
 }

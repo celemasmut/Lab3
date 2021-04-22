@@ -4,7 +4,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-public class Movie {
+public class Movie implements Comparable<Movie>{
     private String title;
     private LocalDate releaseDate;
     private Duration movieLength;
@@ -12,8 +12,8 @@ public class Movie {
     private String description;
     private Audience classification;
     private Genre movieGenre;
-    private int stock=0;
-    private int rent=0;
+    private int stock;
+    private int rent;
 
     public Movie(String title,String country, LocalDate releaseDate,int movieLength,Audience classification, Genre movieGenre,int stock){
         this.title=title;
@@ -94,9 +94,29 @@ public class Movie {
     }
 
     public void setStock(int stock) {
-        this.stock += stock;
+        this.stock = stock;
     }
-    public void discountStock(){
-        this.stock--;
+
+    @Override
+    public int compareTo(Movie x) {
+        if(x.getRent() < this.rent){
+            return -1;
+        }
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "title='" + title + '\'' +
+                ", releaseDate=" + releaseDate +
+                ", movieLength=" + movieLength +
+                ", country='" + country + '\'' +
+                ", description='" + description + '\'' +
+                ", classification=" + classification +
+                ", movieGenre=" + movieGenre +
+                ", rentals="+rent+
+                '}'+
+                "\n";
     }
 }
