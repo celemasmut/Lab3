@@ -15,6 +15,7 @@ public class Rental {
         setId();
     }
 
+
     public UUID getId() {
         return id;
     }
@@ -34,15 +35,7 @@ public class Rental {
     public void setTicket() {
         this.ticket = new LoanTicket();
     }
-
-    public void setStatusOff(){
-        this.status="off";
-    }
-
-    public String getStatus(){
-        return this.status;
-    }
-
+    
 
     @Override
     public String toString() {
