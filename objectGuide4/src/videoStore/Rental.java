@@ -5,7 +5,8 @@ import java.util.UUID;
 public class Rental {
     private UUID id;
     private Movie movieRented;
-    private LoanTicket ticket;
+    private LoanTicket ticket; // as in the tp says "boleta de préstamo definiendo la fecha de retiro y la fecha de devolución"
+    // I decided to make an extra class. so the rental will be the register of the rental in the video store.
 
     public Rental(Movie movieRented){
         this.movieRented=movieRented;
