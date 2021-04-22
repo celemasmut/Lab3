@@ -47,8 +47,8 @@ public class Main {
         System.out.println("The movies that need to be regained today are: "+myVideoStore.listRegainOnDate());
 
         //return movie
-        UUID idRental=myVideoStore.lookingForIdRental("Guardians of the Galaxy");
-        myVideoStore.returnMovie(idRental);
+        Rental customRental=myVideoStore.lookingForIdRental(custId,"Guardians of the Galaxy");
+        myVideoStore.returnMovie(customRental);
         //check stock
         System.out.println("Exist movie :"+myVideoStore.movieExist("Guardians of the Galaxy").getTitle() + " Stock : "+ myVideoStore.movieStock(myVideoStore.movieExist("Guardians of the Galaxy")));
 
@@ -74,7 +74,7 @@ public class Main {
 
         System.out.println(myVideoStore.showMovieDescription("The Avengers"));
 
-        System.out.println(myVideoStore.showingLastCustomerRentals(custId));
+        System.out.println(myVideoStore.showingCustomerLastRentals(custId));
 
     }
 }

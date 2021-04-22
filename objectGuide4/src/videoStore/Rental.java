@@ -6,7 +6,6 @@ public class Rental {
     private UUID id;
     private Movie movieRented;
     private LoanTicket ticket;
-    private String status="on";
 
     public Rental(Movie movieRented){
         this.movieRented=movieRented;
@@ -25,10 +24,6 @@ public class Rental {
 
     public Movie getMovieRented() {
         return movieRented;
-    }
-
-    public void setMovieRented(Movie movieRented) {
-        this.movieRented = movieRented;
     }
 
     public LoanTicket getTicket() {
