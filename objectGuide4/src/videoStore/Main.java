@@ -54,7 +54,7 @@ public class Main {
         //showing last customer rentals
       //  System.out.println(myVideoStore.showingLastCustomerRentals(myVideoStore.searchingForCustomer("226738537")));
 
-        //forsing rents to verify list
+        //forcing rents to verify list
         myVideoStore.getMoviesList().get(0).setRent();
         myVideoStore.getMoviesList().get(2).setRent();
         myVideoStore.getMoviesList().get(2).setRent();
