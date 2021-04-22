@@ -54,6 +54,7 @@ public class Rental {
                 "id=" + id +
                 ", movie Rented =" + getMovieRented().getTitle() +
                 ", ticket=" + ticket +
-                '}';
+                '}'+
+                "\n";
     }
 }

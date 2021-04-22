@@ -9,7 +9,8 @@ import java.util.UUID;
 public class VideoStore {
     private ArrayList<Customer> customersList = new ArrayList<>();
     private ArrayList<Movie> moviesList = new ArrayList<>();
-    // private ArrayList <Rental> rentals = new ArrayList<>(); I decided to no use an arraylist of Rental as I already have an arrayList of Rental in Customer
+    // private ArrayList <Rental> rentals = new ArrayList<>();
+    // I decided not to use an arraylist of Rental as I already have an arrayList of Rental in Customer
 
     public VideoStore() {
     }
@@ -54,7 +55,7 @@ public class VideoStore {
     }
 
     public ArrayList<Movie> lookingByGenre(Genre x){
-        ArrayList<Movie> byGenre = null;
+        ArrayList<Movie> byGenre= new ArrayList<>();
         for(Movie movies: moviesList){
             if(movies.getMovieGenre().equals(x)){
                 byGenre.add(movies);
@@ -85,7 +86,7 @@ public class VideoStore {
         String message="";
         for (Customer theCustomer : customersList){
             if(theCustomer.getId().equals(idCustomer)){
-                message+= theCustomer.toString();
+                message= "Customer: "+ theCustomer.getName() + theCustomer.getCustomerRentals().toString();
             }
         }
         return message;

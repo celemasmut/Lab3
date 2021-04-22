@@ -1,6 +1,7 @@
 package videoStore;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Main {
@@ -64,8 +65,16 @@ public class Main {
 
         myVideoStore.sortMoviesByPopularity();
 
-        //System.out.println(myVideoStore.getMoviesList());
-        myVideoStore.getMoviesList().forEach(el -> System.out.println(el.toString()));//el is like the object
-      //  list.forEach(el -> System.out.println(el.age))
+        myVideoStore.getMoviesList().forEach(ob -> System.out.println(ob.toString()));//ob is  the object
+
+        System.out.println("The most rented movie is: "+myVideoStore.mostRentedMovie());
+
+        ArrayList <Movie> moviesByGenre=myVideoStore.lookingByGenre(Genre.HORROR);
+        moviesByGenre.forEach(ob -> System.out.println(ob.toString()));
+
+        System.out.println(myVideoStore.showMovieDescription("The Avengers"));
+
+        System.out.println(myVideoStore.showingLastCustomerRentals(custId));
+
     }
 }
