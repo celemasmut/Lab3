@@ -1,4 +1,4 @@
-package deliveryFood;
+package productDelivery;
 
 public class Product {
     private int stock;
@@ -33,5 +33,14 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "stock=" + stock +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                '}';
     }
 }
