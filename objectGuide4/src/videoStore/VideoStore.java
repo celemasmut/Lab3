@@ -182,7 +182,7 @@ public class VideoStore {
             }
         }
 
-// the method sort the movie list by popularity. it used and override method compareTo() that is in movie class.
+// the method sort the movie list by popularity. it used and override method compareTo that is in movie class.
         public void sortMoviesByPopularity(){
             Collections.sort(moviesList);
         }
