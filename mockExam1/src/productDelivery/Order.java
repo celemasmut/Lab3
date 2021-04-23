@@ -9,6 +9,7 @@ public class Order {
     private double km;
     private boolean confirmation=false;
     private double totalDelivery;
+    private double totalOrder=0;
 
 
     public Order(Product product, double km) {
@@ -51,6 +52,19 @@ public class Order {
 
     public UUID getId() {
         return id;
+    }
+    public void setTotalOrder(double price){
+        this.totalDelivery+= price;
+    }
+
+    public double getTotalOrder(){
+        return totalOrder;
+    }
+
+    public void calculateTotal(){
+        for (Product myProd: productList){
+            setTotalOrder(myProd.getPrice());
+        }
     }
 
     @Override

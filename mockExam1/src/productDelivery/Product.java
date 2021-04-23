@@ -4,6 +4,7 @@ public class Product {
     private int stock;
     private String name;
     private double price;
+    private int sold=0;
 
     public Product(int stock, String name, double price) {
         this.stock = stock;
@@ -33,6 +34,14 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public int getSold() {
+        return sold;
+    }
+
+    public void setSold() {
+        this.sold++;
     }
 
     @Override

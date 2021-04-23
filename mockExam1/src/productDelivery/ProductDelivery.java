@@ -61,23 +61,33 @@ public class ProductDelivery {
 
     public Product searchForProduct(String name){
         for (Product product: productList){
-            if(product.getName().equals(name)){
-                if(product.getStock() > 0) return product;
-            }
+            if(product.getName().equals(name))return product;
         }
         return null;
     }
-    public void createOrder(Customer customer, String name, double km){
-        Product product=searchForProduct(name);
-        Order order =new Order(product,km);
-        for(Customer custom : myCustomerList){
-            if(custom.equals(customer)){
-                custom.setCustomerOrder(order);
+
+    public boolean checkStock(Product product){
+        return product.getStock() > 0 ? true : false;
+    }
+    public String createOrder(Customer customer, String name, double km){
+        String message;
+        if(checkStock(searchForProduct(name))) {
+            message="Stock ok, order will be created";
+            Order order = new Order(searchForProduct(name), km);
+            for (Customer custom : myCustomerList) {
+                if (custom.equals(customer)) {
+                    custom.setCustomerOrder(order);
+                    searchForProduct(name).setStock(searchForProduct(name).getStock() - 1);
+                    searchForProduct(name).setSold();
+                }
             }
+        }else {
+            message="Run out stock, can not take this order";
         }
+        return message;
     }
 
-    public String showOrder(Customer customer,String name, double km){
+    public String setCostOrder(Customer customer,String name, double km){
         createOrder(customer,name,km);
         String message="";
         double totalPrice=0;
@@ -90,6 +100,41 @@ public class ProductDelivery {
         }
         return message;
     }
-    
+
+    public double getQuantitySold(){
+        double quantity=0;
+        for (Product myProduct: productList){
+            quantity+= myProduct.getSold();
+        }
+        return quantity;
+    }
+
+    public double averageTotalSold(){
+        String message="";
+        double totalCost=0;
+        double averageTotal=0;
+        for(Customer myCustomer : myCustomerList){
+            for(Order custOrder : myCustomer.getCustomerOrder()){
+                totalCost+= custOrder.getTotalDelivery();
+            }
+            averageTotal=totalCost/getQuantitySold();
+        }
+        return averageTotal;
+    }
+
+
+    public Customer showCustomerWithMoreOrders(){
+        double aux1=0;
+        double aux2=0;
+        for (Customer myCustomer:myCustomerList){
+            for(Order custOrder : myCustomer.getCustomerOrder()){
+                custOrder.calculateTotal();
+                aux1 += custOrder.getTotalOrder();
+            }
+        }
+        return null;
+    }
+
+
 
 }
