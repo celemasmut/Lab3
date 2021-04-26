@@ -12,10 +12,11 @@ public class Order {
     private double totalOrder=0;
 
 
-    public Order(Product product, double km) {
+    public Order(Product product, double km, double cost) {
         this.id= UUID.randomUUID();
         this.km=km;
         productList.add(product);
+        setTotalDelivery(cost);
     }
 
     public List<Product> getTheProduct() {
@@ -77,4 +78,6 @@ public class Order {
                 ", total=" + totalDelivery +
                 '}';
     }
+
+
 }

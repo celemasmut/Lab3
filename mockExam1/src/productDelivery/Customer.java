@@ -3,7 +3,7 @@ package productDelivery;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Customer {
+public class Customer implements Comparable<Customer>{
      private  String address;
     private String phone;
      private String name;
@@ -57,5 +57,13 @@ public class Customer {
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", customerOrder=" + customerOrder;
+    }
+
+    @Override
+    public int compareTo(Customer o) {
+        if(o.getCustomerOrder().size() > this.customerOrder.size()){
+            return -1;
+        }
+        return 0;
     }
 }
