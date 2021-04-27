@@ -3,13 +3,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Order {
+public class Order implements Comparable<Order>{
     private UUID id;
     private List<Product> productList= new ArrayList<>();
     private double km;
     private boolean confirmation=false;
-    private double totalDelivery;
-    private double totalOrder=0;
+    private double totalDelivery=0;
+    private int totalOrder=0;
+
+    public Order(){}
 
 
     public Order(Product product, double km, double delivery) {
@@ -63,23 +65,24 @@ public class Order {
         return id;
     }
     public void setTotalOrder(double price){
-        this.totalDelivery+= price;
+        this.totalOrder+= price;
     }
 
     public double getTotalOrder(){
         return totalOrder;
     }
 
-    public void calculateTotal(){
+    public double calculateTotal(){
         for (Product myProd: productList){
             setTotalOrder(myProd.getPrice());
         }
+        return getTotalOrder();
     }
 
     @Override
     public String toString() {
         return "Order{" +
-                "id=" + id +
+                ", id=" + id +
                 ", productList=" + productList +
                 ", km=" + km +
                 ", confirmation=" + confirmation +
@@ -87,5 +90,11 @@ public class Order {
                 '}';
     }
 
-
+    @Override
+    public int compareTo(Order o) {
+        if(this.calculateTotal() < o.calculateTotal()){
+            return -1;
+        }
+        return 0;
+    }
 }

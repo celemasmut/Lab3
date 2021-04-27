@@ -1,8 +1,8 @@
 package productDelivery;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 public class ProductDelivery {
 
@@ -45,9 +45,9 @@ public class ProductDelivery {
         setMyCustomerList(customer);
     }
     //The method search for a certain customer
-    public Customer searchForCustomer(String name){
+    public Customer searchForCustomer(UUID id){
         for (Customer customer: myCustomerList ){
-            if(customer.getName().equals(name)){
+            if(customer.getId().equals(id)){
                 return customer;
             }
         }
@@ -77,14 +77,18 @@ public class ProductDelivery {
         return null;
     }
 
-
+//The method change stock ones the client confirm order
+    public void changeProductStock(Order order){
+        for(Product prud : order.getTheProduct()){
+            prud.setStock(prud.getStock()-1);
+            prud.setSold();
+        }
+    }
 
     public void addOrderToCustomer(Customer customer,Order order){
         for (Customer custom : myCustomerList) {
             if (custom.equals(customer)) {
                 custom.setCustomerOrder(order);
-                searchForProduct(custom.getName()).setStock(searchForProduct(custom.getName()).getStock() - 1);
-                searchForProduct(custom.getName()).setSold();
             }
         }
     }
@@ -99,7 +103,7 @@ public class ProductDelivery {
         return quantity;
     }
 
-    //The method calculate the total sold's average
+    //The method calculate the total sold average
     public double averageTotalSold(){
         String message="";
         double totalCost=0;
@@ -115,13 +119,23 @@ public class ProductDelivery {
 
     //The method sorts the customer list by amount of order
     public void orderCustomerByAmountOfOrders(){
-        Collections.sort(myCustomerList);
+
     }
+
 
     //the method returns the customer with more orders
     public Customer showCustomerWithMoreOrders(){
-        orderCustomerByAmountOfOrders();
-       return myCustomerList.get(0);
+        Customer ob1 = new Customer();
+        Order ob2=new Order();
+        for(Customer customer: myCustomerList){
+            for (Order sale : customer.getCustomerOrder()){
+                if(sale.calculateTotal() > ob2.getTotalOrder()){
+                    ob1=customer;
+                    ob2=sale;
+                }
+            }
+        }
+       return ob1;
     }
 
 
