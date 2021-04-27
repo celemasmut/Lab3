@@ -29,14 +29,6 @@ public class ProductDelivery {
         this.productList.add(product);
     }
 
-    public double getDeliveryCost() {
-        return deliveryCost;
-    }
-
-    public void setDeliveryCost(double deliveryCost) {
-        this.deliveryCost = deliveryCost;
-    }
-
     //The method adds a product to the product list
     public void addProduct(String name, double price , int stock){
         Product newProduct =new Product(stock, name, price);
@@ -48,8 +40,8 @@ public class ProductDelivery {
         setMyCustomerList(customer);
     }
     //The method adds a Business customer to the customer list
-    public void addBusinessCustomer(String fantasyName, String address, String phone, double discount){
-        BusinessCustomer customer = new BusinessCustomer(fantasyName,address,phone,discount);
+    public void addBusinessCustomer(String fantasyName, String address, String phone){
+        BusinessCustomer customer = new BusinessCustomer(fantasyName,address,phone);
         setMyCustomerList(customer);
     }
     //The method search for a certain customer
@@ -75,24 +67,28 @@ public class ProductDelivery {
         return product.getStock() > 0 ? true : false;
     }
 
-    //The method create an order . It needs a customer, product name and the km. it returns a message
-    public String createOrder(Customer customer, String name, double km){
-        String message;
-        if(checkStock(searchForProduct(name))) {
-            message="Stock ok, order will be created";
-            Order order = new Order(searchForProduct(name), km,this.deliveryCost);
-            for (Customer custom : myCustomerList) {
-                if (custom.equals(customer)) {
-                    custom.setCustomerOrder(order);
-                    searchForProduct(name).setStock(searchForProduct(name).getStock() - 1);
-                    searchForProduct(name).setSold();
-                }
-            }
-        }else {
-            message="Run out stock, can not take this order";
+    //The method create an order . It needs a product name and the km. it returns a message
+    public Order createOrder( String name, double km) {
+        Order order = null;
+        if (checkStock(searchForProduct(name))) {
+            System.out.println("Stock ok, order created");
+            return order = new Order(searchForProduct(name), km, this.deliveryCost);
         }
-        return message;
+        return null;
     }
+
+
+
+    public void addOrderToCustomer(Customer customer,Order order){
+        for (Customer custom : myCustomerList) {
+            if (custom.equals(customer)) {
+                custom.setCustomerOrder(order);
+                searchForProduct(custom.getName()).setStock(searchForProduct(custom.getName()).getStock() - 1);
+                searchForProduct(custom.getName()).setSold();
+            }
+        }
+    }
+
 
     //The method gets the quantity of products sold
     public double getQuantitySold(){

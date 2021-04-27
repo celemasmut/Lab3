@@ -2,11 +2,6 @@ package productDelivery;
 
 public class ParticularCustomer extends Customer {
 
-
-    public ParticularCustomer(){
-        super();
-    }
-
     public ParticularCustomer(String name,String address, String phone){
        super(address, phone, name);
     }

@@ -12,11 +12,11 @@ public class Order {
     private double totalOrder=0;
 
 
-    public Order(Product product, double km, double cost) {
+    public Order(Product product, double km, double delivery) {
         this.id= UUID.randomUUID();
         this.km=km;
         productList.add(product);
-        setTotalDelivery(cost);
+        setTotalDelivery(delivery);
     }
 
     public List<Product> getTheProduct() {
@@ -39,8 +39,16 @@ public class Order {
         return confirmation;
     }
 
-    public void setConfirmation(boolean confirmation) {
-        this.confirmation = confirmation;
+    public void setConfirmation(int confirmation) {
+        if(confirmation == 1){
+            this.confirmation=true;
+        }else{
+            this.confirmation=false;
+        }
+    }
+
+    public boolean getConfirmation(){
+        return this.confirmation;
     }
 
     public double getTotalDelivery() {

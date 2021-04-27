@@ -1,23 +1,14 @@
 package productDelivery;
 
 public class BusinessCustomer extends Customer{
-    private double discount;
+    private double discount = 15;
 
     public BusinessCustomer(){
         super();
     }
 
-    public BusinessCustomer(String fantasyName, String address, String phone, double discount) {
+    public BusinessCustomer(String fantasyName, String address, String phone) {
        super(address,phone,fantasyName);
-        this.discount = discount;
-    }
-
-    public double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
     }
 
     @Override
