@@ -1,6 +1,7 @@
 package productDelivery;
 
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Main {
     static Scanner scan = new Scanner(System.in);
@@ -37,7 +38,7 @@ public class Main {
         store.addProduct("cookies", 150,17);
         store.addProduct("water",100,20);
         //
-      /*  System.out.println("Customers");
+        System.out.println("Customers");
         store.getMyCustomerList().forEach(ob -> System.out.println("ID:"+ob.getId() + "name: "+ob.getName()));
         System.out.println("Select the customer's id that takes the order");
         UUID idcust = UUID.fromString(scan.next());
@@ -51,26 +52,26 @@ public class Main {
         double km= scan.nextDouble();
 
         //order1
+        double average=0;
+        double total=0;
+
 
         Order customerOrder = store.createOrder(name,km);
         customerOrder.setTheProduct(store.searchForProduct("Cocacola"));
         System.out.println("customer confirm order? yes = 1 / No = 0");
         customerOrder.setConfirmation(scan.nextInt());
         if(customerOrder.getConfirmation()){
-            store.changeProductStock(customerOrder);
             store.addOrderToCustomer(myCustomer,customerOrder);
-            int totalPrice=0;
-            for(Product prod :customerOrder.getTheProduct()){
-                totalPrice += prod.getPrice();
-            }
-            System.out.println("total is: $"+ customerOrder.getTotalDelivery() + totalPrice );
+            total=store.seeTotalSale(myCustomer,customerOrder);
+            average+=total;
+            System.out.println("total is: $"+ total );
         }else{
             System.out.println("customer does not confirm order");
-        }*/
+        }
 
         //order2
-        Customer myCustomer;
-        Order customerOrder;
+
+
 
         myCustomer=store.getMyCustomerList().get(2);
         customerOrder = store.createOrder("water",5);
@@ -79,14 +80,13 @@ public class Main {
         customerOrder.setTheProduct(store.searchForProduct("cookies"));
 
 
+
         customerOrder.setConfirmation(1);
         if(customerOrder.getConfirmation()){
             store.addOrderToCustomer(myCustomer,customerOrder);
-            int totalPrice=0;
-            for(Product prod :customerOrder.getTheProduct()){
-                totalPrice += prod.getPrice();
-            }
-            System.out.println("total is: $"+ customerOrder.getTotalDelivery() + totalPrice );
+            total=store.seeTotalSale(myCustomer,customerOrder);
+            System.out.println("total is: $"+ total);
+            average+=total;
         }else{
             System.out.println("customer does not confirm order");
         }
@@ -102,20 +102,19 @@ public class Main {
         customerOrder.setConfirmation(1);
         if(customerOrder.getConfirmation()){
             store.addOrderToCustomer(myCustomer,customerOrder);
-            int totalPrice=0;
-            for(Product prod :customerOrder.getTheProduct()){
-                totalPrice += prod.getPrice();
-            }
-            System.out.println("total is: $"+ customerOrder.getTotalDelivery() + totalPrice );
+            total=store.seeTotalSale(myCustomer,customerOrder);
+            System.out.println("total is: $"+ total );
+            average+=total;
         }else{
             System.out.println("customer does not confirm order");
         }
 
         store.getMyCustomerList().forEach(ob-> System.out.println(ob.toString()));
 
-        System.out.println("The customer with more "+store.showCustomerWithMoreOrders().toString());
+        System.out.println("The customer with more sales based on the cost "+store.showCustomerWithMoreOrders().toString());
 
-        System.out.println("today's average sales: $"+store.averageTotalSold());
+
+        System.out.println("today's average sales: $"+(average/store.getQuantitySold()));
 
     }
 }

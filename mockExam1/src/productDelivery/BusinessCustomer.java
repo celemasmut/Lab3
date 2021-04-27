@@ -1,7 +1,6 @@
 package productDelivery;
 
 public class BusinessCustomer extends Customer{
-    private double discount = 15;
 
     public BusinessCustomer(String fantasyName, String address, String phone) {
        super(address,phone,fantasyName);
@@ -10,7 +9,6 @@ public class BusinessCustomer extends Customer{
     @Override
     public String toString() {
         return "Business Customer: "+
-                super.toString() +
-                "discount=" + discount ;
+                super.toString() ;
     }
 }

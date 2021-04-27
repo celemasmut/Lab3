@@ -89,8 +89,17 @@ public class ProductDelivery {
         for (Customer custom : myCustomerList) {
             if (custom.equals(customer)) {
                 custom.setCustomerOrder(order);
+                changeProductStock(order);
             }
         }
+    }
+    public double seeTotalSale(Customer customer,Order order){
+     if(customer instanceof ParticularCustomer){
+         return order.calculateTotal();
+     }else if(customer instanceof BusinessCustomer){
+         return order.calculateTotal()-order.calculateTotalBusiness();
+     }
+     return 0;
     }
 
 
@@ -101,25 +110,6 @@ public class ProductDelivery {
             quantity+= myProduct.getSold();
         }
         return quantity;
-    }
-
-    //The method calculate the total sold average
-    public double averageTotalSold(){
-        String message="";
-        double totalCost=0;
-        double averageTotal=0;
-        for(Customer myCustomer : myCustomerList){
-            for(Order custOrder : myCustomer.getCustomerOrder()){
-                totalCost+= custOrder.getTotalDelivery();
-            }
-            averageTotal=totalCost/getQuantitySold();
-        }
-        return averageTotal;
-    }
-
-    //The method sorts the customer list by amount of order
-    public void orderCustomerByAmountOfOrders(){
-
     }
 
 

@@ -29,18 +29,6 @@ public class Order implements Comparable<Order>{
         this.productList.add(theProduct) ;
     }
 
-    public double getKm() {
-        return km;
-    }
-
-    public void setKm(double km) {
-        this.km = km;
-    }
-
-    public boolean isConfirmation() {
-        return confirmation;
-    }
-
     public void setConfirmation(int confirmation) {
         if(confirmation == 1){
             this.confirmation=true;
@@ -53,17 +41,10 @@ public class Order implements Comparable<Order>{
         return this.confirmation;
     }
 
-    public double getTotalDelivery() {
-        return totalDelivery;
-    }
-
     public void setTotalDelivery(double deliveryCost) {
         this.totalDelivery = this.km*deliveryCost;
     }
 
-    public UUID getId() {
-        return id;
-    }
     public void setTotalOrder(double price){
         this.totalOrder+= price;
     }
@@ -72,11 +53,18 @@ public class Order implements Comparable<Order>{
         return totalOrder;
     }
 
+    public double getTotalPrice(){
+        return totalDelivery + totalOrder;
+    }
+
     public double calculateTotal(){
         for (Product myProd: productList){
             setTotalOrder(myProd.getPrice());
         }
-        return getTotalOrder();
+        return getTotalPrice();
+    }
+    public double calculateTotalBusiness(){
+        return (getTotalPrice()*15)/100;
     }
 
     @Override
@@ -86,7 +74,8 @@ public class Order implements Comparable<Order>{
                 ", productList=" + productList +
                 ", km=" + km +
                 ", confirmation=" + confirmation +
-                ", total=" + totalDelivery +
+                ", total order=" + totalOrder +
+                ", total delivery =" + totalDelivery +
                 '}';
     }
 
