@@ -10,4 +10,9 @@ public class ParticularCustomer extends Customer {
     public String toString() {
         return "Particula Customer: "+ super.toString();
     }
+
+    @Override
+    public double seeTotalSalePurchase(Order o) {
+        return o.calculateTotal();
+    }
 }

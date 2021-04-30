@@ -11,4 +11,12 @@ public class BusinessCustomer extends Customer{
         return "Business Customer: "+
                 super.toString() ;
     }
+
+
+    @Override
+    public double seeTotalSalePurchase(Order o) {
+        return o.calculateTotal()-o.calculateTotalBusiness();
+    }
+
+
 }

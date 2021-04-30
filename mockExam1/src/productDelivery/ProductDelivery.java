@@ -1,8 +1,6 @@
 package productDelivery;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class ProductDelivery {
 
@@ -93,14 +91,6 @@ public class ProductDelivery {
             }
         }
     }
-    public double seeTotalSale(Customer customer,Order order){
-     if(customer instanceof ParticularCustomer){
-         return order.calculateTotal();
-     }else if(customer instanceof BusinessCustomer){
-         return order.calculateTotal()-order.calculateTotalBusiness();
-     }
-     return 0;
-    }
 
 
     //The method gets the quantity of products sold
@@ -114,18 +104,9 @@ public class ProductDelivery {
 
 
     //the method returns the customer with more orders
-    public Customer showCustomerWithMoreOrders(){
-        Customer ob1 = new Customer();
-        Order ob2=new Order();
-        for(Customer customer: myCustomerList){
-            for (Order sale : customer.getCustomerOrder()){
-                if(sale.calculateTotal() > ob2.getTotalOrder()){
-                    ob1=customer;
-                    ob2=sale;
-                }
-            }
-        }
-       return ob1;
+    public Optional<Customer> showCustomerWithMoreOrders(){
+        return myCustomerList.stream()
+                .max(Comparator.comparing(Customer::seeTotalSalePurchase));
     }
 
 
