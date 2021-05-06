@@ -62,7 +62,7 @@ public class Main {
         customerOrder.setConfirmation(scan.nextInt());
         if(customerOrder.getConfirmation()){
             store.addOrderToCustomer(myCustomer,customerOrder);
-            total=store.seeTotalSale(myCustomer,customerOrder);
+            total= myCustomer.seeTotalSalePurchase(customerOrder);
             average+=total;
             System.out.println("total is: $"+ total );
         }else{
@@ -84,7 +84,7 @@ public class Main {
         customerOrder.setConfirmation(1);
         if(customerOrder.getConfirmation()){
             store.addOrderToCustomer(myCustomer,customerOrder);
-            total=store.seeTotalSale(myCustomer,customerOrder);
+            total=myCustomer.seeTotalSalePurchase(customerOrder);
             System.out.println("total is: $"+ total);
             average+=total;
         }else{
@@ -102,7 +102,7 @@ public class Main {
         customerOrder.setConfirmation(1);
         if(customerOrder.getConfirmation()){
             store.addOrderToCustomer(myCustomer,customerOrder);
-            total=store.seeTotalSale(myCustomer,customerOrder);
+            total=myCustomer.seeTotalSalePurchase(customerOrder);
             System.out.println("total is: $"+ total );
             average+=total;
         }else{
@@ -111,7 +111,7 @@ public class Main {
 
         store.getMyCustomerList().forEach(ob-> System.out.println(ob.toString()));
 
-        System.out.println("The customer with more sales based on the cost "+store.showCustomerWithMoreOrders().toString());
+       System.out.println("The customer with more sales based on the cost "+store.showCustomerWithMoreOrders().toString());
 
 
         System.out.println("today's average sales: $"+(average/store.getQuantitySold()));

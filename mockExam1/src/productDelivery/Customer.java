@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Customer{
+public abstract class Customer {
     private UUID id;
      private  String address;
     private String phone;
@@ -50,6 +50,17 @@ public class Customer{
                 ", address='" + address + '\'' +
                 ", customerOrder=" + customerOrder;
     }
+
+    public abstract double seeTotalSalePurchase(Order o);
+
+   public int seeTotalSalePurchase(){
+       int total=0;
+       for(Order order : getCustomerOrder()){
+           total+=order.getTotalOrder();
+       }
+       return total;
+   }
+
 
 
 }
